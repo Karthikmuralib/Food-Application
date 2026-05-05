@@ -83,28 +83,6 @@ Food-Application/
 
 ## 📸 Screenshots
 
-(Add your project UI screenshots here)
 
----
 
-## 🔮 Future Enhancements
 
-* 💳 Online Payment Integration
-* 📊 Admin Dashboard
-* 📍 Order Tracking System
-* 🎨 Improved UI/UX
-
----
-
-## 👨‍💻 Author
-
-**Karthik Murali**
-GitHub: https://github.com/Karthikmuralib
-
----
-
-## 📢 Note
-
-This project is developed for learning purposes to demonstrate **full-stack development using Java technologies**.
-
----
