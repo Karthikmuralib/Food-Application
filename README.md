@@ -11,33 +11,33 @@ This project demonstrates backend development using **Java, Spring Boot, and MyS
 
 ## 🚀 Tech Stack
 
-* **Programming Language**: Java
-* **Frameworks**: Spring Boot, Hibernate
-* **Backend Technologies**: JDBC, Servlets
-* **Database**: MySQL
-* **Build Tool**: Maven
-* **Tools Used**: Eclipse, Postman
-* **Frontend**: HTML, CSS, JavaScript
+- **Programming Language**: Java
+- **Frameworks**: Spring Boot, Hibernate
+- **Backend Technologies**: JDBC, Servlets
+- **Database**: MySQL
+- **Build Tool**: Maven
+- **Tools Used**: Eclipse, Postman
+- **Frontend**: HTML, CSS, JavaScript
 
 ---
 
 ## ✨ Features
 
-* 👤 User Registration and Login
-* 🍽️ Browse Food Menu
-* 🛒 Add Items to Cart
-* 📦 Place Orders
-* 🔄 Backend Integration with Database
-* ⚙️ REST API Support
+- 👤 User Registration and Login
+- 🍽️ Browse Food Menu
+- 🛒 Add Items to Cart
+- 📦 Place Orders
+- 🔄 Backend Integration with Database
+- ⚙️ REST API Support
 
 ---
 
 ## 🏗️ Architecture
 
-* Follows **MVC (Model-View-Controller)** architecture
-* Uses **Spring Boot** for backend development
-* Handles database operations using **JDBC / Hibernate**
-* REST APIs used for communication
+- Follows **MVC (Model-View-Controller)** architecture
+- Uses **Spring Boot** for backend development
+- Handles database operations using **JDBC / Hibernate**
+- REST APIs used for communication
 
 ---
 
@@ -65,13 +65,11 @@ Food-Application/
 2. Open the project in Eclipse or any IDE
 
 3. Configure MySQL database:
-
-   * Create a database
-   * Update DB username & password in `application.properties`
+   - Create a database
+   - Update DB username & password in `application.properties`
 
 4. Run the application:
-
-   * Run as **Spring Boot Application**
+   - Run as **Spring Boot Application**
 
 5. Open browser:
 
@@ -81,7 +79,36 @@ Food-Application/
 
 ---
 
+## Deploy on Railway
+
+The deployable web project is in `TapFood/TapFood` and includes a Maven WAR build and Dockerfile.
+
+1. Connect this GitHub repository to a Railway service.
+2. Set the service root directory to `TapFood/TapFood`.
+3. Railway will build the application from the included `Dockerfile`.
+4. Add a MySQL-compatible database and configure these service variables:
+
+   ```text
+   DB_HOST=<database host>
+   DB_PORT=<database port>
+   DB_NAME=tapfood
+   DB_USER=<database user>
+   DB_PASSWORD=<database password>
+   ```
+
+5. Import the `tapfood` schema and tables into the Railway database.
+6. Generate a Railway public domain and open:
+
+   ```text
+   https://<your-domain>/TapFood/login.jsp
+   ```
+
+The application uses `localhost`, `root`, and `root` as local defaults and reads Railway values from environment variables.
+
+---
+
 ## 📸 Screenshots
+
 <img width="952" height="830" alt="Image" src="https://github.com/user-attachments/assets/26661c49-7556-42bf-9267-98123b2db010" />
 
 <img width="1600" height="780" alt="Image" src="https://github.com/user-attachments/assets/f75c9b53-92c2-428d-a55d-9c96d75e8e00" />

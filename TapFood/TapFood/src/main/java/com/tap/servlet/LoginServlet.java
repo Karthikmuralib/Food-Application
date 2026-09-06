@@ -2,7 +2,6 @@ package com.tap.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -12,14 +11,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import com.tap.utility.DBConnection;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/tapfood";
-    private static final String JDBC_USER = "root";
-    private static final String JDBC_PASS = "root";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
+            Connection con = DBConnection.getConnection();
 
             String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
             PreparedStatement ps = con.prepareStatement(sql);
