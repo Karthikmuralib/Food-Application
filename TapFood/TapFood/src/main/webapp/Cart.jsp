@@ -170,16 +170,21 @@
     }
 </style>
 </head>
-<body>
+<body class="app-page cart-page">
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark px-4">
     <a class="navbar-brand" href="home">CraveRoute</a>
 </nav>
 
-<div class="cart-container">
-
-    <h2>Your Cart</h2>
+<main class="cart-page-shell">
+    <div class="cart-heading">
+        <div>
+            <h1>Your Cart</h1>
+            <p>Review your order before checkout.</p>
+        </div>
+        <a href="menu?restaurantId=<%= session.getAttribute("restaurantId") %>" class="cart-add-more">+ Add more items</a>
+    </div>
 
     <%
         Cart cart = (Cart) session.getAttribute("cart");
@@ -194,11 +199,15 @@
             int restaurantId = (Integer) session.getAttribute("restaurantId");
     %>
 
-    <% for (CartItem item : items.values()) { %>
+    <div class="cart-layout">
+        <section class="cart-items">
+    <% for(CartItem item : items.values()) { %>
     <div class="item-card">
+        <img class="cart-item-image" src="Images/biryani.jpg" alt="<%= item.getName() %>">
 
         <div class="item-details">
             <strong><%= item.getName() %></strong>
+            <span class="cart-restaurant">CraveRoute restaurant</span>
             <div class="price">₹ <%= item.getPrice() %></div>
         </div>
 
@@ -236,17 +245,23 @@
     </div>
     <% } %>
 
-        <div class="total">Total: ₹ <%= cart.getTotalAmount() %></div>
+        </section>
+        <aside class="cart-summary">
+            <h3>ORDER SUMMARY</h3>
+            <div class="summary-line"><span>Subtotal</span><strong>₹ <%= cart.getTotalAmount() %></strong></div>
+            <div class="summary-line"><span>Delivery fee</span><strong>Calculated at checkout</strong></div>
+            <div class="summary-total"><span>Total</span><strong>₹ <%= cart.getTotalAmount() %></strong></div>
+            <a href="checkout.jsp" class="btn-checkout">Checkout</a>
+        </aside>
+    </div>
 
-        <!-- BUTTONS ONE BELOW ANOTHER -->
-        <div class="btn-bottom">
-            <a href="menu?restaurantId=<%= restaurantId %>" class="btn-add">➕ Add More Items</a>
-            <a href="checkout.jsp" class="btn-checkout">✔ Proceed to Checkout</a>
+        <div class="cart-footer-link">
+            <a href="menu?restaurantId=<%= restaurantId %>" class="btn-add">← Continue browsing</a>
         </div>
 
     <% } %>
 
-</div>
+</main>
 
 <footer>
     © 2026 CraveRoute | Your order, your way.

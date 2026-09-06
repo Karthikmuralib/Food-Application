@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ page import="java.util.Map, com.tap.model.Cart, com.tap.model.CartItem" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -106,37 +107,155 @@ pageEncoding="UTF-8"%>
     </style>
   </head>
 
-  <body>
+  <body class="app-page checkout-page">
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark px-4">
       <a class="navbar-brand" href="home">CraveRoute</a>
     </nav>
 
-    <div class="checkout-box">
-      <h2>Checkout</h2>
+    <main class="checkout-shell">
+      <div class="checkout-steps" aria-hidden="true">
+        <span class="step active">1</span>
+        <span class="step-line"></span>
+        <span class="step">2</span>
+      </div>
+
+      <section class="checkout-main">
+      <div class="checkout-box">
+        <div class="checkout-section-heading">
+          <span class="section-icon">⌖</span>
+          <div>
+            <h2>Delivery address</h2>
+            <p>Where should we bring your order?</p>
+          </div>
+        </div>
 
       <form action="checkout" method="post">
         <!-- Address -->
         <div class="mb-3">
-          <label class="form-label">Delivery Address</label>
-          <textarea name="address" rows="3" required></textarea>
+          <label class="form-label">Saved addresses</label>
+          <div class="saved-addresses">
+            <label class="address-option" data-address-id="home-address">
+              <input type="radio" name="savedAddress" value="home-address" data-address="Home, 24 Green Park Road, Bengaluru" checked>
+              <span class="address-option-icon">⌂</span>
+              <span class="address-option-copy"><strong>Home</strong><small>24 Green Park Road, Bengaluru</small></span>
+              <span class="address-option-check">✓</span>
+              <button type="button" class="delete-address" aria-label="Delete Home address">×</button>
+            </label>
+            <label class="address-option" data-address-id="work-address">
+              <input type="radio" name="savedAddress" value="work-address" data-address="Office, 9th Phase, JP Nagar, Bengaluru">
+              <span class="address-option-icon">▣</span>
+              <span class="address-option-copy"><strong>Office</strong><small>9th Phase, JP Nagar, Bengaluru</small></span>
+              <span class="address-option-check">✓</span>
+              <button type="button" class="delete-address" aria-label="Delete Office address">×</button>
+            </label>
+            <label class="address-option address-option-new">
+              <input type="radio" name="savedAddress" value="new-address">
+              <span class="address-option-icon">+</span>
+              <span class="address-option-copy"><strong>Add new address</strong><small>Use a different delivery location</small></span>
+              <span class="address-option-check">✓</span>
+            </label>
+          </div>
+          <div class="address-entry">
+            <label class="form-label" for="deliveryAddress">Delivery address</label>
+            <textarea id="deliveryAddress" name="address" rows="3" placeholder="Street, city, state, ZIP" required>Home, 24 Green Park Road, Bengaluru</textarea>
+          </div>
         </div>
 
-        <!-- Payment Method -->
-        <div class="mb-3">
-          <label class="form-label">Payment Method</label>
-          <select name="paymentMethod" required>
-            <option value="" disabled selected>Select Payment Method</option>
-            <option value="Cash on Delivery">Cash on Delivery</option>
-            <option value="UPI">UPI</option>
-            <option value="Card Payment">Card Payment</option>
-          </select>
+        <div class="checkout-payment-block">
+          <div class="checkout-section-heading">
+            <span class="section-icon">▣</span>
+            <div>
+              <h2>Choose payment method</h2>
+              <p>Select how you want to pay.</p>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Payment Method</label>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="Cash on Delivery" required>
+                <span class="payment-icon">₹</span>
+                <span class="payment-copy"><strong>Cash on Delivery</strong><small>Pay when your food arrives</small></span>
+                <span class="payment-check">✓</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="UPI">
+                <span class="payment-icon">↗</span>
+                <span class="payment-copy"><strong>UPI Payment</strong><small>Google Pay, PhonePe or other UPI apps</small></span>
+                <span class="payment-check">✓</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="Card Payment">
+                <span class="payment-icon">▣</span>
+                <span class="payment-copy"><strong>Card Payment</strong><small>Credit card or debit card</small></span>
+                <span class="payment-check">✓</span>
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn-order">Proceed to pay</button>
         </div>
-
-        <button type="submit" class="btn-order">✔ Place Order</button>
       </form>
-    </div>
+      </div>
+      </section>
+
+      <aside class="checkout-summary">
+        <h3>Your order</h3>
+        <%
+          Cart checkoutCart = (Cart) session.getAttribute("cart");
+          if (checkoutCart != null && !checkoutCart.getItems().isEmpty()) {
+            for (CartItem item : checkoutCart.getItems().values()) {
+        %>
+        <div class="checkout-item">
+          <span><%= item.getName() %> <small>× <%= item.getQuantity() %></small></span>
+          <strong>₹ <%= item.getPrice() * item.getQuantity() %></strong>
+        </div>
+        <%  }
+          }
+        %>
+        <div class="checkout-total"><span>Total</span><strong>₹ <%= checkoutCart != null ? checkoutCart.getTotalAmount() : 0 %></strong></div>
+      </aside>
+    </main>
 
     <footer>© 2026 CraveRoute | Secure checkout.</footer>
+    <script>
+      const addressOptions = document.querySelectorAll('input[name="savedAddress"]');
+      const addressField = document.getElementById('deliveryAddress');
+      const newAddressOption = document.querySelector('.address-option-new input');
+
+      addressOptions.forEach((option) => {
+        option.addEventListener('change', () => {
+          const isNewAddress = option === newAddressOption;
+          addressField.readOnly = !isNewAddress;
+          addressField.value = isNewAddress ? '' : option.dataset.address;
+          if (isNewAddress) addressField.focus();
+        });
+      });
+
+      document.querySelectorAll('.delete-address').forEach((deleteButton) => {
+        deleteButton.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const addressCard = deleteButton.closest('.address-option');
+          const addressName = addressCard.querySelector('.address-option-copy strong').textContent;
+          if (!window.confirm('Delete the saved ' + addressName + ' address?')) return;
+
+          const wasSelected = addressCard.querySelector('input').checked;
+          addressCard.remove();
+
+          if (wasSelected) {
+            const nextAddress = document.querySelector('.address-option:not(.address-option-new) input');
+            if (nextAddress) {
+              nextAddress.checked = true;
+              nextAddress.dispatchEvent(new Event('change'));
+            } else {
+              newAddressOption.checked = true;
+              newAddressOption.dispatchEvent(new Event('change'));
+            }
+          }
+        });
+      });
+    </script>
   </body>
 </html>

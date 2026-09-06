@@ -100,39 +100,63 @@
         }
     </style>
 </head>
-<body>
+<body class="app-page menu-page">
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark px-4">
     <a class="navbar-brand" href="home">CraveRoute</a>
 </nav>
 
-<div class="container mt-5">
+<main class="menu-shell">
+    <aside class="menu-sidebar">
+        <span class="menu-badge">★ CraveRoute Plus</span>
+        <p class="menu-rating">★ 5 <span>(200+ ratings)</span></p>
+        <p class="menu-meta">25 min &nbsp;·&nbsp; ₹₹₹ &nbsp;·&nbsp; Indian</p>
+        <span class="menu-favorite">Customer favorite</span>
+        <div class="menu-location">📍 Koramangala, Bengaluru</div>
+        <p class="menu-fees">ⓘ Service fees apply — pricing &amp; fees</p>
+        <button type="button" class="menu-see-more">See more</button>
+        <div class="menu-hours">
+            <strong>FULL MENU</strong>
+            <b>11:00 am – 10:00 pm</b>
+        </div>
+        <nav class="menu-sections" aria-label="Menu sections">
+            <a href="#popular">Most Liked Items From The Menu</a>
+            <a href="#popular">Reviews</a>
+            <a href="#popular">Full Menu</a>
+            <a href="#popular">Appetizers</a>
+            <a class="active" href="#popular">Mains</a>
+            <a href="#popular">Breads &amp; Rice</a>
+            <a href="#popular">Desserts &amp; Drinks</a>
+        </nav>
+    </aside>
+
+    <section class="menu-content" id="popular">
     <h2>Choose something worth craving</h2>
-    <div class="row g-4">
+    <div class="menu-list">
         <%
             List<Menu> menus = (List<Menu>) request.getAttribute("menus");
             if (menus != null && !menus.isEmpty()) {
                 for (Menu m : menus) {
         %>
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <img src="<%= request.getContextPath() + "/" + m.getImagePath() %>" class="card-img" alt="Food Image">
-                <div class="card-body">
-                    <h5 class="card-title"><%= m.getName() %></h5>
-                    <p class="card-text"><%= m.getDescription() %></p>
-                    <p class="price">₹ <%= m.getPrice() %></p>
+        <article class="menu-item">
+            <img src="<%= request.getContextPath() + "/" + m.getImagePath() %>" class="menu-item-image" alt="<%= m.getName() %>">
+            <div class="menu-item-copy">
+                <h5 class="card-title"><%= m.getName() %></h5>
+                <p class="card-text"><%= m.getDescription() %></p>
+            </div>
+            <div class="menu-item-action">
+                <p class="price">₹ <%= m.getPrice() %></p>
 
                     <form action="cart" method="post">
                         <input type="hidden" name="action" value="add">
                         <input type="hidden" name="itemId" value="<%= m.getMenuId() %>">
                         <input type="hidden" name="restaurantId" value="<%= m.getRestaurantId() %>">
                         <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-cart">🛒 Add to Cart</button>
+                        <button type="submit" class="btn btn-cart" aria-label="Add <%= m.getName() %> to cart">+</button>
                     </form>
-                </div>
             </div>
-        </div>
+        </article>
         <%
                 }
             } else {
@@ -146,7 +170,8 @@
     <div class="text-center">
         <a href="home" class="btn btn-back">🏠 Back to Home</a>
     </div>
-</div>
+    </section>
+</main>
 
 <footer>© 2026 CraveRoute | Good food is always in season.</footer>
 </body>

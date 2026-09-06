@@ -37,17 +37,19 @@
     </style>
 </head>
 
-<body>
+<body class="app-page home-page">
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark px-4">
     <a class="navbar-brand" href="home">CraveRoute</a>
 
-    <div class="ms-auto d-flex align-items-center">
+    <div class="ms-auto d-flex align-items-center home-nav-actions">
         <%
             if (username != null) {
         %>
             <span class="text-white me-3">Hello, <b><%= username %></b></span>
+            <a href="account.jsp" class="account-entry">Account</a>
+            <a href="order_history.jsp" class="account-entry">Orders</a>
             <a href="LogoutServlet" class="btn btn-logout">Logout</a>
         <%
             } else {
@@ -67,7 +69,7 @@
 </div>
 <div class="container mt-4">
     <h2 class="text-center fw-bold mb-4">Popular Restaurants</h2>
-    <div class="row g-4">
+    <div class="restaurant-row">
         <%
             List<Restaurant> restaurants = (List<Restaurant>) request.getAttribute("restaurants");
             if (restaurants != null && !restaurants.isEmpty()) {
@@ -77,7 +79,7 @@
                         imagePath = "Images/spicegarden.jpg";
                     }
         %>
-        <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="restaurant-slot">
             <div class="card restaurant-card shadow-sm">
                 <a href="menu?restaurantId=<%=r.getRestaurantid()%>" style="text-decoration:none;color:black;">
                     <img src="<%= request.getContextPath() + "/" + imagePath %>" alt="Restaurant Image">
@@ -87,6 +89,7 @@
                         <p>⭐ <%= r.getRating() %></p>
                         <p><b>Cuisine:</b> <%= r.getCuisineType() %></p>
                         <p><b>ETA:</b> <%= r.getEta() %> mins</p>
+                        <span class="view-menu">View menu <span aria-hidden="true">→</span></span>
                     </div>
                 </a>
             </div>

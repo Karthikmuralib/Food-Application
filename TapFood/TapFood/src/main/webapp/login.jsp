@@ -91,7 +91,7 @@
     </style>
 </head>
 
-<body class="auth-page">
+<body class="auth-page login-page">
 
 <div class="container mt-5">
     <div class="row justify-content-center">

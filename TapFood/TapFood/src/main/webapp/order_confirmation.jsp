@@ -15,90 +15,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="swadexpress.css">
 
-    <style>
-        /* NAVBAR */
-        .navbar { background: #FF6F91; }
-        .navbar-brand { font-weight: bold; font-size: 26px; }
-        
-        /* BODY */
-        body {
-            background-color: #F1F1F1;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* MAIN CARD */
-        .confirmation-box {
-            max-width: 650px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 25px 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            font-weight: 700;
-            color: #3E4E5E;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .info-label { font-weight: 600; color: #333; }
-
-        .item-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-            color: #444;
-        }
-
-        .total {
-            text-align: right;
-            font-weight: 700;
-            font-size: 20px;
-            color: #FF6F91;
-            margin-top: 20px;
-        }
-
-        .btn-home {
-            background-color: #FF6F91;
-            color: white;
-            font-weight: bold;
-            padding: 12px 25px;
-            border-radius: 10px;
-            margin-top: 25px;
-            display: block;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .btn-home:hover {
-            background-color: #FFD166;
-            color: #3E4E5E;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 12px;
-            background: #FF6F91;
-            color: white;
-            margin-top: 40px;
-        }
-    </style>
 </head>
 
-<body>
+<body class="app-page confirmation-page">
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark px-4">
     <a class="navbar-brand" href="home">CraveRoute</a>
 </nav>
 
-<div class="confirmation-box">
-
-    <h2>Order Confirmation ✅</h2>
+<main class="confirmation-shell">
+    <header class="confirmation-heading">
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <p class="eyebrow">ORDER CONFIRMED</p>
+        <h1>Order confirmed!</h1>
+        <p>Thanks for ordering with CraveRoute — your food is being prepared.</p>
+    </header>
 
     <%
         Orders order = (Orders) session.getAttribute("order");
@@ -107,36 +39,54 @@
         if(order != null && items != null){
     %>
 
-    <p><span class="info-label">Order ID:</span> <%= order.getOrderId() %></p>
-    <p><span class="info-label">Order Date:</span> <%= order.getOrderDate() %></p>
-    <p><span class="info-label">Delivery Address:</span> <%= order.getAddress() %></p>
-    <p><span class="info-label">Payment Method:</span> <%= order.getPaymentMode() %></p>
+    <div class="confirmation-layout">
+        <section class="confirmation-main">
+            <div class="delivery-banner">
+                <span class="section-icon">◷</span>
+                <div><strong>Estimated delivery</strong><small>Your order will arrive hot and fresh</small></div>
+                <b>35 mins<small>ETA</small></b>
+            </div>
+            <div class="status-card">
+                <p class="eyebrow">ORDER STATUS</p>
+                <div class="status-track">
+                    <span class="status-node done">✓<small>Placed</small></span>
+                    <span class="status-progress"></span>
+                    <span class="status-node active">⌂<small>Preparing</small></span>
+                    <span class="status-progress muted"></span>
+                    <span class="status-node">▣<small>On the way</small></span>
+                    <span class="status-progress muted"></span>
+                    <span class="status-node">⌂<small>Delivered</small></span>
+                </div>
+            </div>
+            <a href="menu?restaurantId=<%= order.getRestaurantId() %>" class="btn-home">Back to Menu</a>
+        </section>
 
-    <h4 class="mt-4">Items Ordered:</h4>
-
-    <div>
+        <aside class="confirmation-summary">
+            <h3>ORDER SUMMARY</h3>
+            <p class="summary-detail">Order #<%= order.getOrderId() %> · <%= order.getPaymentMode() %></p>
             <% for(CartItem item : items.values()){ %>
             <div class="item-row">
-                <span><%= item.getName() %> x <%= item.getQuantity() %></span>
-                <span>₹ <%= item.getPrice() * item.getQuantity() %></span>
+                <span><%= item.getName() %> <small>× <%= item.getQuantity() %></small></span>
+                <strong>₹ <%= item.getPrice() * item.getQuantity() %></strong>
             </div>
-        <% } %>
+            <% } %>
+            <div class="total"><span>Total paid</span><strong>₹ <%= order.getTotalAmount() %></strong></div>
+            <div class="summary-address"><span>⌂</span><div><strong>Delivering to</strong><small><%= order.getAddress() %></small></div></div>
+        </aside>
     </div>
-
-    <div class="total">Total Amount: ₹ <%= order.getTotalAmount() %></div>
-
-    <a href="menu.jsp" class="btn-home">Back to Menu</a>
 
     <%
         } else {
     %>
-        <h3 class="text-center text-danger">No order found!</h3>
-        <a href="menu.jsp" class="btn-home">Back to Menu</a>
+        <section class="confirmation-empty">
+            <h3>No order found!</h3>
+            <a href="menu.jsp" class="btn-home">Back to Menu</a>
+        </section>
     <%
         }
     %>
 
-</div>
+</main>
 
 <footer>© 2026 CraveRoute | Thanks for ordering.</footer>
 

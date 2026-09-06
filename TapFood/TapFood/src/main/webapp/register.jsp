@@ -86,7 +86,7 @@
     </style>
 </head>
 
-<body class="auth-page">
+<body class="auth-page register-page">
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -117,26 +117,46 @@
                     <% } %>
 
                     <!-- REGISTRATION FORM -->
-                    <form action="RegisterServlet" method="post">
+                    <form action="RegisterServlet" method="post" onsubmit="return validateRegistration();">
+                        <div class="auth-form-grid">
 
                         <div class="mb-3">
                             <label class="form-label">Full Name</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <input type="text" name="name" class="form-control" placeholder="Your full name" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Username</label>
-                            <input type="text" name="username" class="form-control" required>
+                            <input type="text" name="username" class="form-control" placeholder="Choose a username" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="Phone number" required>
+                        </div>
+
+                        <div class="mb-3 full-width">
+                            <label class="form-label">Delivery Address</label>
+                            <input type="text" name="address" class="form-control" placeholder="Street, city, state, ZIP" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" id="confirmPassword" class="form-control" required>
+                        </div>
+
+                        <div id="passwordMessage" class="auth-help full-width" aria-live="polite"></div>
+
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">
@@ -154,6 +174,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    function validateRegistration() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const message = document.getElementById('passwordMessage');
+
+        if (password !== confirmPassword) {
+            message.textContent = 'Passwords do not match.';
+            return false;
+        }
+
+        message.textContent = '';
+        return true;
+    }
+</script>
 
 </body>
 </html>
