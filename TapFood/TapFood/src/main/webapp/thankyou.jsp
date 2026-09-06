@@ -5,8 +5,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JavaBites - Order Placed 🎉</title>
+    <title>CraveRoute - Order Placed</title>
     <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
+    <link rel="stylesheet" href="swadexpress.css">
 
     <style>
         body {
@@ -88,7 +89,7 @@
 
 <div class="container">
     <h1>Order Successful 🎉</h1>
-    <p>Thank you for ordering from <strong>FoddyBites!</strong></p>
+    <p>Thank you for ordering from <strong>CraveRoute!</strong></p>
     <p>Your delicious food is on the way 😋</p>
 
     <%

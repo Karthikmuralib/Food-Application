@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JavaBites - Login</title>
+    <title>CraveRoute - Login</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
@@ -14,6 +14,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="swadexpress.css">
 
     <!-- Custom CSS -->
     <style>
@@ -90,7 +91,7 @@
     </style>
 </head>
 
-<body>
+<body class="auth-page">
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -99,7 +100,7 @@
 
                 <!-- HEADER -->
                 <div class="card-header">
-                    <h3>Login to JavaBites</h3>
+                    <h3>Welcome back</h3>
                 </div>
 
                 <div class="card-body">

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JavaBites - Register</title>
+    <title>CraveRoute - Create Account</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
@@ -14,6 +14,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="swadexpress.css">
 
     <!-- Custom CSS -->
     <style>
@@ -85,7 +86,7 @@
     </style>
 </head>
 
-<body>
+<body class="auth-page">
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -94,7 +95,7 @@
 
                 <!-- HEADER -->
                 <div class="card-header">
-                    <h3>Create Your JavaBites Account</h3>
+                    <h3>Create your CraveRoute account</h3>
                 </div>
 
                 <div class="card-body">

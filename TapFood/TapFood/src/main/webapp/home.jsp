@@ -15,11 +15,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FoddyBites - Home</title>
+    <title>CraveRoute - Restaurants</title>
     <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="swadexpress.css">
 
     <style>
         body { background-color: #F1F1F1; font-family: 'Poppins', sans-serif; color: #3E4E5E; margin:0; padding:0; }
@@ -40,7 +41,7 @@
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark px-4">
-    <a class="navbar-brand" href="#">🍕 From code to cuisine — your hunger ends here.</a>
+    <a class="navbar-brand" href="home">CraveRoute</a>
 
     <div class="ms-auto d-flex align-items-center">
         <%
@@ -62,7 +63,7 @@
 <!-- RESTAURANT LIST -->
 <!-- WELCOME MESSAGE -->
 <div class="container mt-4">
-    <h1 class="text-center fw-bold mb-4"> Welcome to FoodyBites!</h1>
+    <h1 class="text-center fw-bold mb-4">Great food, delivered your way</h1>
 </div>
 <div class="container mt-4">
     <h2 class="text-center fw-bold mb-4">Popular Restaurants</h2>
@@ -73,7 +74,7 @@
                 for (Restaurant r : restaurants) {
                     String imagePath = r.getImagePath();
                     if (imagePath == null || imagePath.isEmpty()) {
-                        imagePath = "Images/default-restaurant.jpg";
+                        imagePath = "Images/spicegarden.jpg";
                     }
         %>
         <div class="col-sm-6 col-md-4 col-lg-3">
@@ -96,7 +97,7 @@
     </div>
 </div>
 
-<footer>© 2025 FoodyBites | Designed Like Annapurna. ❤</footer>
+<footer>© 2026 CraveRoute | Fresh food from kitchens worth knowing.</footer>
 
 </body>
 </html>

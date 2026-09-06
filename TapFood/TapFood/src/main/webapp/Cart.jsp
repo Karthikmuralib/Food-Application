@@ -7,11 +7,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JavaBites - Cart</title>
+    <title>CraveRoute - Cart</title>
 
     <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="swadexpress.css">
 
 <style>
     body {
@@ -173,7 +174,7 @@
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark px-4">
-    <a class="navbar-brand" href="home">JavaBites</a>
+    <a class="navbar-brand" href="home">CraveRoute</a>
 </nav>
 
 <div class="cart-container">
@@ -248,7 +249,7 @@
 </div>
 
 <footer>
-    © 2025 JavaBites | Designed by Annapurna ❤
+    © 2026 CraveRoute | Your order, your way.
 </footer>
 
 </body>

@@ -1,0 +1,195 @@
+:root {
+  --ink: #090b09;
+  --surface: #17100b;
+  --surface-soft: #21150c;
+  --line: #3b2819;
+  --orange: #f47719;
+  --orange-deep: #c84d08;
+  --cream: #f5efe5;
+  --muted: #a99c90;
+  --green: #35bd6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--ink) !important;
+  color: var(--cream) !important;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif !important;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: rgba(7, 9, 7, 0.96) !important;
+  border-bottom: 1px solid var(--line);
+  min-height: 76px;
+  padding: 0 8% !important;
+}
+
+.navbar-brand,
+.navbar-brand:hover {
+  color: var(--orange) !important;
+  font-size: 25px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.card-title {
+  color: var(--cream) !important;
+  font-weight: 800 !important;
+}
+p,
+.card-text,
+.restaurant-details p,
+label,
+.form-label {
+  color: var(--muted) !important;
+}
+
+a,
+a:hover {
+  color: var(--orange) !important;
+}
+
+.container {
+  max-width: 1160px;
+}
+
+.restaurant-card,
+.card,
+.checkout-box,
+.confirmation-box,
+.item-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px !important;
+  color: var(--cream);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18) !important;
+}
+
+.restaurant-card:hover,
+.card:hover {
+  transform: translateY(-5px) !important;
+  border-color: var(--orange) !important;
+}
+.restaurant-card img,
+.card-img {
+  height: 220px !important;
+  object-fit: cover;
+}
+
+.btn,
+.btn-primary,
+.btn-cart,
+.btn-order,
+.btn-back,
+.btn-logout {
+  background: var(--orange) !important;
+  border: 1px solid var(--orange) !important;
+  border-radius: 9px !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  padding: 11px 18px !important;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-cart:hover,
+.btn-order:hover,
+.btn-back:hover,
+.btn-logout:hover {
+  background: var(--orange-deep) !important;
+  border-color: var(--orange-deep) !important;
+  color: #fff !important;
+}
+
+.form-control,
+textarea,
+select {
+  background: #f7f9fb !important;
+  border: 1px solid #6c6258 !important;
+  border-radius: 9px !important;
+  color: #202020 !important;
+  padding: 12px 14px !important;
+}
+
+.form-control:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 0 3px rgba(244, 119, 25, 0.2) !important;
+}
+
+footer {
+  background: #120c08 !important;
+  border-top: 1px solid var(--line);
+  color: var(--muted) !important;
+  padding: 22px !important;
+}
+
+body:has(.card-header) {
+  background:
+    linear-gradient(rgba(5, 7, 5, 0.78), rgba(5, 7, 5, 0.92)),
+    url("Images/spicegarden.jpg") center/cover fixed !important;
+}
+
+.auth-page {
+  background:
+    linear-gradient(rgba(5, 7, 5, 0.76), rgba(5, 7, 5, 0.9)),
+    url("Images/spicegarden.jpg") center center / cover fixed no-repeat !important;
+}
+
+.card-header {
+  background: transparent !important;
+  border-bottom: 1px solid var(--line) !important;
+  padding: 28px !important;
+}
+
+.card-header h3 {
+  color: var(--orange) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+body:has(.card-header) .card {
+  max-width: 500px;
+  margin: 5vh auto;
+}
+body:has(.card-header) .card-body {
+  padding: 28px !important;
+}
+
+.checkout-box,
+.confirmation-box {
+  margin-top: 52px !important;
+  padding: 30px !important;
+}
+.checkout-box h2,
+.confirmation-box h2 {
+  color: var(--orange) !important;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0 5% !important;
+  }
+  .navbar-brand {
+    font-size: 21px !important;
+  }
+  .container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .checkout-box,
+  .confirmation-box {
+    margin: 24px 5% !important;
+    padding: 22px !important;
+  }
+}

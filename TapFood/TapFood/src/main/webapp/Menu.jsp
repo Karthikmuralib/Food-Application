@@ -13,10 +13,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FoddyBites - Menu</title>
+    <title>CraveRoute - Menu</title>
     <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="swadexpress.css">
 
     <style>
         /* BODY & FONT */
@@ -103,11 +104,11 @@
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark px-4">
-    <a class="navbar-brand" href="#">FoddyBites</a>
+    <a class="navbar-brand" href="home">CraveRoute</a>
 </nav>
 
 <div class="container mt-5">
-    <h2>🍴 Taste the Best, One Bite at a Time</h2>
+    <h2>Choose something worth craving</h2>
     <div class="row g-4">
         <%
             List<Menu> menus = (List<Menu>) request.getAttribute("menus");
@@ -147,6 +148,6 @@
     </div>
 </div>
 
-<footer>© 2025 JavaBites | Designed Like Annapurna. ❤</footer>
+<footer>© 2026 CraveRoute | Good food is always in season.</footer>
 </body>
 </html>
