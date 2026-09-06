@@ -1,0 +1,8 @@
+TapFood/TapFood/target/
+TapFood/TapFood/build/
+TapFood/TapFood/bin/
+TapFood/TapFood/.settings/
+TapFood/TapFood/.classpath
+TapFood/TapFood/.project
+.git/
+*.class
