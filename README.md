@@ -124,7 +124,6 @@ The application uses `localhost`, `root`, and `root` as local defaults and reads
 <img width="1600" height="754" alt="Image" src="https://github.com/user-attachments/assets/49da5259-3654-48a2-9549-716a1752fd93" />
 
 <img width="1229" height="756" alt="Image" src="https://github.com/user-attachments/assets/6044f2bc-a1c5-4963-8df5-343e9da17135" />
-
 🔮 Future Enhancements
 💳 Online Payment Integration
 📊 Admin Dashboard
